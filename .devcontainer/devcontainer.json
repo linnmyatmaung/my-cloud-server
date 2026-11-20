@@ -1,0 +1,12 @@
+{
+  "name": "Ubuntu Cloud Server",
+  "image": "ubuntu:24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {},
+    "ghcr.io/devcontainers/features/sshd:1": {},
+    "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+      "packages": "nginx,tmux"
+    }
+  },
+  "postStartCommand": "sudo ln -sf /workspaces/my-cloud-server/nginx.conf /etc/nginx/sites-enabled/default && sudo service nginx restart"
+}
