@@ -1,12 +1,6 @@
 {
-  "name": "Ubuntu Cloud Server",
-  "image": "ubuntu:24.04",
-  "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {},
-    "ghcr.io/devcontainers/features/sshd:1": {},
-    "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
-      "packages": "nginx,tmux"
-    }
-  },
-  "postStartCommand": "sudo ln -sf /workspaces/my-cloud-server/nginx.conf /etc/nginx/sites-enabled/default && sudo service nginx restart"
+  "name": "Nginx Cloud Server",
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y nginx && sudo ln -sf /workspaces/my-cloud-server/nginx/default.conf /etc/nginx/sites-available/default && sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default",
+  "postStartCommand": "sudo service nginx start",
+  "forwardPorts": [80]
 }
