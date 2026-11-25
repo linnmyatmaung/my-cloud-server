@@ -2,5 +2,11 @@
   "name": "Nginx Cloud Server",
   "postCreateCommand": "sudo apt-get update && sudo apt-get install -y nginx && sudo ln -sf /workspaces/my-cloud-server/nginx/default.conf /etc/nginx/sites-available/default && sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default",
   "postStartCommand": "sudo service nginx start",
-  "forwardPorts": [80]
+  "forwardPorts":,
+  "portsAttributes": {
+    "80": {
+      "label": "Nginx Web Server",
+      "visibility": "public"
+    }
+  }
 }
